@@ -4,22 +4,27 @@ import java.io.File;
 import java.io.FileInputStream;
 
 public class SHA {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         new SHA().displaySHAHash();
 
     }
 
     public void displaySHAHash() {
 
-        File good = new File(getClass().getResource("shattered-1.pdf").getFile());
-        File bad = new File(getClass().getResource("shattered-2.pdf").getFile());
-        System.out.println("-------------- SHA-1 ------------");
-        System.out.println("Digest: " + getSHAHash(good));
-        System.out.println("Digest: " + getSHAHash(bad));
+        try {
+            File good = new File(getClass().getResource("shattered-1.pdf").getFile());
+            File bad = new File(getClass().getResource("shattered-2.pdf").getFile());
+            System.out.println("-------------- SHA-1 ------------");
+            System.out.println("Digest: " + getSHAHash(good));
+            System.out.println("Digest: " + getSHAHash(bad));
 
-        System.out.println("-------------- SHA-256 ------------");
-        System.out.println("Digest: " + getSHA2Hash(good));
-        System.out.println("Digest: " + getSHA2Hash(bad));
+            System.out.println("-------------- SHA-256 ------------");
+            System.out.println("Digest: " + getSHA2Hash(good));
+            System.out.println("Digest: " + getSHA2Hash(bad));
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
 
     }
 
